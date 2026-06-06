@@ -28,7 +28,7 @@ Cloudflare Pages:
 - Account ID: `45f6d9d178d3293809ae6d5ca02467c6`
 - Project: `fishermans-road-art-gallery`
 - Pages hostname: `https://fishermans-road-art-gallery.pages.dev`
-- Latest direct deployment checked: `https://a5c17a66.fishermans-road-art-gallery.pages.dev`
+- Direct deployment returned by Wrangler on 6 June 2026: `https://755f25bc.fishermans-road-art-gallery.pages.dev`
 - Deployment source: direct Wrangler upload, not Git-connected yet
 
 The `.pages.dev` URL is deployed, but the managed school network currently blocks that URL category, so local browser/curl checks may show a Jamf/Wandera block page instead of the site. Cloudflare's deployment list shows the Pages deployment succeeded.
