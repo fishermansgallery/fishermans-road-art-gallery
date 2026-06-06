@@ -7,8 +7,26 @@ This site is a static Astro website for Fishermans Road Art Gallery.
 - Domain: `fishermansgallery.au`
 - Public email: `admin@fishermansgallery.au`
 - Facebook: `https://www.facebook.com/profile.php?id=61569997992313`
+- GitHub repository: `https://github.com/fishermansgallery/fishermans-road-art-gallery`
 - Build command: `npm run build`
 - Output directory: `dist`
+
+## Current Deployment Status
+
+GitHub is complete:
+
+- Account: `fishermansgallery`
+- Repository: `fishermansgallery/fishermans-road-art-gallery`
+- Production branch: `main`
+- Initial site commit: `70c6182`
+
+Cloudflare is not complete yet because Cloudflare returned:
+
+```text
+Your user email must been verified [code: 8000077]
+```
+
+Verify the Cloudflare account email address before creating the Pages project. The Wrangler login used the Cloudflare account shown as `david.jp.ramsay@gmail.com`.
 
 ## Account Creation
 
