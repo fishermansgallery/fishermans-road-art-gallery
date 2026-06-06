@@ -1,0 +1,22 @@
+{
+  "name": "fishermans-road-art-gallery",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy:dry-run": "wrangler pages deploy dist --project-name fishermans-road-art-gallery --dry-run"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.3.1",
+    "astro": "^5.13.0",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.51.0"
+  }
+}

@@ -1,0 +1,76 @@
+media:
+  - name: images
+    label: Images
+    input: public/images
+    output: /images
+    categories: [image]
+    extensions: [png, jpg, jpeg, webp, avif]
+    rename: true
+
+content:
+  - name: homepage
+    label: Homepage
+    type: file
+    path: content/pages/home.md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: SEO title
+        type: string
+        required: true
+      - name: description
+        label: Meta description
+        type: text
+        required: true
+      - name: hero
+        label: Hero
+        type: object
+        fields:
+          - name: headline
+            type: string
+            required: true
+          - name: lead
+            type: text
+            required: true
+          - name: primaryCta
+            label: Primary CTA
+            type: string
+          - name: secondaryCta
+            label: Secondary CTA
+            type: string
+      - name: collection
+        label: Current collection
+        type: object
+        fields:
+          - name: heading
+            type: string
+          - name: body
+            type: text
+      - name: visit
+        label: Visit section
+        type: object
+        fields:
+          - name: heading
+            type: string
+          - name: body
+            type: text
+      - name: community
+        label: Artists and community
+        type: object
+        fields:
+          - name: heading
+            type: string
+          - name: body
+            type: text
+      - name: body
+        label: Internal notes
+        type: rich-text
+
+settings:
+  commit:
+    identity: app
+    templates:
+      create: "content: create {path}"
+      update: "content: update {path}"
+      delete: "content: delete {path}"
+      rename: "content: rename {oldPath} to {newPath}"

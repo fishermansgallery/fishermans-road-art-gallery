@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found | Fishermans Road Art Gallery"
+  description="The requested Fishermans Road Art Gallery page could not be found."
+  noindex={true}
+>
+  <main class="not-found">
+    <a class="brand" href="/" aria-label="Fishermans Road Art Gallery home">
+      <span class="brand-mark" aria-hidden="true">FR</span>
+      <span class="brand-text">
+        <strong>Fishermans Road</strong>
+        <span>Art Gallery</span>
+      </span>
+    </a>
+    <h1>Page not found.</h1>
+    <p>The page may have moved, or the artwork may have found a new wall.</p>
+    <a class="button primary" href="/">Return home</a>
+  </main>
+</BaseLayout>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Fishermans Road Art Gallery">
+  <rect width="64" height="64" fill="#f7f5ef"/>
+  <rect x="11" y="11" width="42" height="42" fill="none" stroke="#1b2528" stroke-width="2"/>
+  <path d="M20 42V20h18M20 31h15" fill="none" stroke="#4f858a" stroke-width="4" stroke-linecap="square"/>
+  <path d="M39 21h5v22h-5" fill="none" stroke="#b46a4c" stroke-width="4" stroke-linecap="square"/>
+</svg>

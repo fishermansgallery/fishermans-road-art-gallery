@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { frontmatter as home } from '../../content/pages/home.md';
+
+const email = 'admin@fishermansgallery.au';
+const facebookUrl = 'https://www.facebook.com/profile.php?id=61569997992313';
+
+const artworks = [
+  {
+    title: 'Sculptural seat',
+    medium: 'Carved timber form',
+    image: '/images/artwork-sculptural-seat.webp',
+    alt: 'Large carved timber sculptural seat displayed inside the gallery',
+    size: 'tall',
+  },
+  {
+    title: 'Timber chair',
+    medium: 'Handmade furniture',
+    image: '/images/artwork-timber-chair.webp',
+    alt: 'Handmade timber chair with natural edge detail',
+    size: 'large',
+  },
+  {
+    title: 'Polished platter',
+    medium: 'Mineral object',
+    image: '/images/artwork-stone-platter.webp',
+    alt: 'Polished mineral platter with amber and charcoal markings',
+    size: 'short',
+  },
+  {
+    title: 'Timber bowl',
+    medium: 'Woodwork',
+    image: '/images/artwork-timber-bowl.webp',
+    alt: 'Square carved timber bowl on a polished table',
+    size: 'short',
+  },
+  {
+    title: 'Polished sphere',
+    medium: 'Display object',
+    image: '/images/artwork-polished-sphere.webp',
+    alt: 'Large polished sphere resting on a natural timber plinth',
+    size: 'medium',
+  },
+  {
+    title: 'Butterfly chair',
+    medium: 'Statement furniture',
+    image: '/images/artwork-butterfly-chair.webp',
+    alt: 'Butterfly-shaped timber chair with colorful inset panels',
+    size: 'large',
+  },
+];
+
+const gallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ArtGallery',
+  name: 'Fishermans Road Art Gallery',
+  url: 'https://fishermansgallery.au',
+  email,
+  sameAs: [facebookUrl],
+  image: 'https://fishermansgallery.au/images/og-image.jpg',
+  description: home.description,
+};
+---
+
+<BaseLayout title={home.title} description={home.description}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(gallerySchema)} slot="head"></script>
+
+  <header class="site-hero" id="top">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Fishermans Road Art Gallery home">
+        <span class="brand-mark" aria-hidden="true">FR</span>
+        <span class="brand-text">
+          <strong>Fishermans Road</strong>
+          <span>Art Gallery</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#artworks">Artworks</a>
+        <a href="#artists">Artists</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="#contact">Enquire</a>
+    </nav>
+
+    <section class="hero-grid" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <h1 id="hero-heading">{home.hero.headline}</h1>
+        <p>{home.hero.lead}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#visit">
+            <span>{home.hero.primaryCta}</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="button secondary" href="#artworks">
+            <span>{home.hero.secondaryCta}</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <figure class="hero-media hero-collage" aria-label="Fishermans Road Art Gallery photo collage">
+        <img
+          class="hero-photo main"
+          src="/images/gallery-exterior.webp"
+          alt="Exterior of Fishermans Road Art Gallery with the gallery sign above the entry"
+          width="900"
+          height="675"
+          fetchpriority="high"
+        />
+        <img
+          class="hero-photo"
+          src="/images/gallery-display-shelf.webp"
+          alt="Display shelf with small ceramics, jewellery and crafted pieces"
+          width="900"
+          height="675"
+          fetchpriority="high"
+        />
+        <img
+          class="hero-photo"
+          src="/images/gallery-jewellery-case.webp"
+          alt="Glass jewellery display case inside the gallery"
+          width="900"
+          height="675"
+          fetchpriority="high"
+        />
+        <img
+          class="hero-photo"
+          src="/images/gallery-entrance.webp"
+          alt="Open timber doors leading into the gallery"
+          width="900"
+          height="675"
+          fetchpriority="high"
+        />
+      </figure>
+    </section>
+  </header>
+
+  <main>
+    <section class="collection-section" id="artworks" aria-labelledby="collection-heading">
+      <div class="section-intro">
+        <h2 id="collection-heading">{home.collection.heading}</h2>
+        <p>{home.collection.body}</p>
+        <a class="text-link" href="#contact">
+          <span>Ask about available works</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="art-grid" aria-label="Selected artwork previews">
+        {artworks.map((artwork) => (
+          <figure class={`artwork ${artwork.size}`}>
+            <img src={artwork.image} alt={artwork.alt} loading="lazy" width="650" height="820" />
+            <figcaption>
+              <strong>{artwork.title}</strong>
+              <span>{artwork.medium}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="visit-community" id="visit" aria-labelledby="visit-heading">
+      <div class="visit-panel">
+        <h2 id="visit-heading">{home.visit.heading}</h2>
+        <p>{home.visit.body}</p>
+        <div class="contact-list">
+          <a href={`mailto:${email}`}>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 7 8-7"/></svg>
+            <span>{email}</span>
+          </a>
+          <a href={facebookUrl} target="_blank" rel="noreferrer">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>
+            <span>Facebook page</span>
+          </a>
+        </div>
+      </div>
+      <div class="community-panel" id="artists">
+        <h2>{home.community.heading}</h2>
+        <p>{home.community.body}</p>
+        <a class="button light" href="#contact">
+          <span>Get involved</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="room-strip" aria-label="Gallery room preview">
+      <img
+        src="/images/gallery-mineral-display.webp"
+        alt="Mineral pieces, timber objects and a warm lamp displayed inside the gallery"
+        loading="lazy"
+        width="1600"
+        height="700"
+      />
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="contact-copy">
+        <h2 id="contact-heading">Start a conversation with the gallery.</h2>
+        <p>
+          Send a note about visiting, available artworks, exhibition opportunities or community events.
+          The gallery can reply with current details and the best time to connect.
+        </p>
+      </div>
+      <form class="contact-form" data-contact-form>
+        <div class="form-row">
+          <label>
+            <span>Name</span>
+            <input name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+        </div>
+        <label>
+          <span>Interest</span>
+          <select name="interest">
+            <option value="Visiting the gallery">Visiting the gallery</option>
+            <option value="Artwork enquiry">Artwork enquiry</option>
+            <option value="Artist or exhibition opportunity">Artist or exhibition opportunity</option>
+            <option value="Community event">Community event</option>
+          </select>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="5" placeholder="A quick note about what you would like to discuss"></textarea>
+        </label>
+        <button class="button primary" type="submit">
+          <span>Email the gallery</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand footer-brand" href="#top" aria-label="Fishermans Road Art Gallery home">
+        <span class="brand-mark" aria-hidden="true">FR</span>
+        <span class="brand-text">
+          <strong>Fishermans Road</strong>
+          <span>Art Gallery</span>
+        </span>
+      </a>
+      <p>A place for art, community and inspiration.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <a href="#artworks">Artworks</a>
+      <a href="#artists">Artists</a>
+      <a href="#visit">Visit</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h2>Connect</h2>
+      <a href={`mailto:${email}`}>{email}</a>
+      <a href={facebookUrl} target="_blank" rel="noreferrer">Facebook page</a>
+    </div>
+    <small>&copy; {new Date().getFullYear()} Fishermans Road Art Gallery. All rights reserved.</small>
+  </footer>
+
+  <script is:inline>
+    const contactEmail = 'admin@fishermansgallery.au';
+    const form = document.querySelector('[data-contact-form]');
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const name = String(data.get('name') || '').trim();
+      const sender = String(data.get('email') || '').trim();
+      const interest = String(data.get('interest') || '').trim();
+      const message = String(data.get('message') || '').trim();
+      const subject = encodeURIComponent(`Website enquiry: ${interest || 'Fishermans Road Art Gallery'}`);
+      const body = encodeURIComponent(
+        [`Name: ${name}`, `Email: ${sender}`, `Interest: ${interest}`, '', message].join('\n')
+      );
+      const mailtoHref = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+      form.dataset.mailto = mailtoHref;
+      window.location.href = mailtoHref;
+    });
+  </script>
+</BaseLayout>
