@@ -34,7 +34,7 @@ Cloudflare Pages:
 - Production branch: `main`
 - Build command: `npm run build`
 - Build output directory: `dist`
-- Latest Git-connected deployment checked: `https://cf3ae8a5.fishermans-road-art-gallery.pages.dev`
+- Git-triggered deployment verified after pushing to `main`; use `npx wrangler pages deployment list --project-name fishermans-road-art-gallery` for the current deployment URL.
 
 The `.pages.dev` URL is deployed, but the managed school network currently blocks that URL category, so local browser/curl checks may show a Jamf/Wandera block page instead of the site. Cloudflare's deployment list shows the Pages deployment succeeded.
 
