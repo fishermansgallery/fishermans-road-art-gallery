@@ -13,7 +13,7 @@ This site is a static Astro website for Fishermans Road Art Gallery.
 
 ## Current Deployment Status
 
-As of 6 June 2026, GitHub and Cloudflare Pages are set up.
+As of 7 June 2026, GitHub and Cloudflare Pages are set up.
 
 GitHub:
 
@@ -30,6 +30,7 @@ Cloudflare Pages:
 - Pages hostname: `https://fishermans-road-art-gallery.pages.dev`
 - Direct deployment returned by Wrangler on 6 June 2026: `https://755f25bc.fishermans-road-art-gallery.pages.dev`
 - Deployment source: direct Wrangler upload, not Git-connected yet
+- Git connection status: Cloudflare dashboard has a **Git repository > Connect** flow, but it requires installing/authorizing the Cloudflare Workers and Pages GitHub app for repository access.
 
 The `.pages.dev` URL is deployed, but the managed school network currently blocks that URL category, so local browser/curl checks may show a Jamf/Wandera block page instead of the site. Cloudflare's deployment list shows the Pages deployment succeeded.
 
@@ -44,26 +45,41 @@ braelyn.ns.cloudflare.com
 tony.ns.cloudflare.com
 ```
 
-GoDaddy still showed `fishermansgallery.au` as `Pending Registration` on 6 June 2026. Public DNS checks returned no nameservers yet, so the domain is not ready for the custom-domain cutover.
-
-Cloudflare Pages will not attach `fishermansgallery.au` as a custom domain until DNS management is transferred to Cloudflare. The Pages custom-domain wizard currently shows:
+GoDaddy no longer shows `fishermansgallery.au` as pending registration. On 7 June 2026, GoDaddy's DNS Management > Nameservers tab showed:
 
 ```text
-Before adding fishermansgallery.au to your Pages project, you'll need to transfer your DNS to Cloudflare.
+We're updating your nameservers. Refresh to check for updates.
 ```
+
+Cloudflare also shows the zone is waiting for propagation:
+
+```text
+Waiting for your registrar to propagate your new nameservers
+```
+
+Public DNS checks still returned no nameservers yet on 7 June 2026, so the domain is not ready for the custom-domain cutover.
 
 ## GoDaddy DNS
 
-When GoDaddy finishes registering the domain, use Cloudflare as the authoritative DNS provider.
+Cloudflare is set to be the authoritative DNS provider.
+
+The target nameservers are:
+
+```text
+braelyn.ns.cloudflare.com
+tony.ns.cloudflare.com
+```
+
+If GoDaddy asks for the values again:
 
 1. In GoDaddy, open `fishermansgallery.au`.
 2. Open the domain's DNS or nameserver settings.
 3. Choose custom nameservers.
-4. Replace the GoDaddy nameservers with:
+4. Use:
    - `braelyn.ns.cloudflare.com`
    - `tony.ns.cloudflare.com`
 5. Save the change.
-6. In Cloudflare, open `fishermansgallery.au` and use **I updated my nameservers** if shown.
+6. In Cloudflare, open `fishermansgallery.au` and use **Check nameservers now** if shown.
 
 Propagation can be quick, but GoDaddy and Cloudflare both warn that global DNS changes can take up to 48 hours.
 
