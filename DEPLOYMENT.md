@@ -59,6 +59,13 @@ Waiting for your registrar to propagate your new nameservers
 
 Public DNS checks still returned no nameservers yet on 7 June 2026, so the domain is not ready for the custom-domain cutover.
 
+Additional 7 June 2026 checks:
+
+- `dig +trace fishermansgallery.au NS` reached the `.au` registry but did not return a delegation for `fishermansgallery.au`.
+- `https://rdap.cctld.au/rdap/domain/fishermansgallery.au` returned `404 Object not found`.
+
+This indicates the remaining delay is upstream registrar/registry processing, not a missing Cloudflare Pages setting.
+
 ## GoDaddy DNS
 
 Cloudflare is set to be the authoritative DNS provider.
