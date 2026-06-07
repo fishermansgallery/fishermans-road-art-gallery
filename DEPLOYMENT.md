@@ -29,8 +29,12 @@ Cloudflare Pages:
 - Project: `fishermans-road-art-gallery`
 - Pages hostname: `https://fishermans-road-art-gallery.pages.dev`
 - Direct deployment returned by Wrangler on 6 June 2026: `https://755f25bc.fishermans-road-art-gallery.pages.dev`
-- Deployment source: direct Wrangler upload, not Git-connected yet
-- Git connection status: Cloudflare dashboard has a **Git repository > Connect** flow, but it requires installing/authorizing the Cloudflare Workers and Pages GitHub app for repository access.
+- Deployment source: GitHub-connected Cloudflare Pages project
+- Git provider: connected to `fishermansgallery/fishermans-road-art-gallery`
+- Production branch: `main`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Latest Git-connected deployment checked: `https://cf3ae8a5.fishermans-road-art-gallery.pages.dev`
 
 The `.pages.dev` URL is deployed, but the managed school network currently blocks that URL category, so local browser/curl checks may show a Jamf/Wandera block page instead of the site. Cloudflare's deployment list shows the Pages deployment succeeded.
 
